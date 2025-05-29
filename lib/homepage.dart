@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      
+
       drawer: Drawer(
         child: ListView(
           children: [
@@ -42,14 +42,14 @@ class HomePage extends StatelessWidget {
               accountEmail: Text("leysimejia@.coml"),
               currentAccountPicture: GestureDetector(
                 child: CircleAvatar(
+                  backgroundColor: const Color.fromARGB(255, 233, 225, 238),
                   child: Text(
-                    "AM",
+                    "LM",
                     style: TextStyle(
-                        color: Colors.pink,
+                        color: const Color.fromARGB(255, 183, 71, 235),
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold),
                   ),
-                  backgroundColor: Colors.white,
                 ),
               ),
             )
