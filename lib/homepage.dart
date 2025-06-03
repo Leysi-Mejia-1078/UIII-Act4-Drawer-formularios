@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -42,17 +43,40 @@ class HomePage extends StatelessWidget {
               accountEmail: Text("a.22308051281078@cbtis128.edu.mx"),
               currentAccountPicture: GestureDetector(
                 child: CircleAvatar(
-                  backgroundColor: const Color.fromARGB(255, 233, 225, 238),
-                  child: Text(
-                    "LM",
-                    style: TextStyle(
-                        color: const Color.fromARGB(255, 183, 71, 235),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  radius: 130,
+                  backgroundColor: Colors.red,
+                  child: CircleAvatar(
+                    radius: 120,
+                    backgroundImage: NetworkImage(
+                        'https://raw.githubusercontent.com/Leysi-Mejia-1078/imagenes/refs/heads/main/leysi.png'),
+                  )
                 ),
               ),
-            )
+            ),
+            InkWell(
+              onTap: (){},
+              child: ListTile(
+                onTap: (){Navigator.popAndPushNamed(context, "/home");},
+                leading: Icon(Icons.home, color: const Color.fromARGB(255, 81, 10, 87)),
+                title: Text("Pagina Inicio"),
+              ),
+            ),
+            InkWell(
+              onTap: null,
+              child: ListTile(
+                onTap: (){Navigator.popAndPushNamed(context, "/sucursales");},
+                leading: Icon(Icons.business, color: Colors.black),
+                title: Text("Sucursales"),
+              ),
+            ),
+            InkWell(
+              onTap: null,
+              child: ListTile(
+                onTap: (){Navigator.popAndPushNamed(context, "/clientes");},
+                leading: Icon(Icons.person, color: Colors.black),
+                title: Text("Clientes"),
+              ),
+            ),
           ],
         ),
       ),

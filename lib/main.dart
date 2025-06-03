@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/formularios/form_cliente.dart';
+import 'package:myapp/formularios/form_sucursal.dart';
 import 'package:myapp/homepage.dart';
 
 void main() {
@@ -15,6 +17,8 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       routes: {
         "/home": (context) => HomePage(),
+        "/sucursales": (context) => Sucursales(),
+        "/clientes": (context) => Clientes(),
       },
     );
   }
