@@ -117,7 +117,7 @@ class _ClientesState extends State<Clientes> {
         );
       },
       child: Text(
-        "Submit Form".toUpperCase(),
+        "Agregar".toUpperCase(),
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.deepPurple,

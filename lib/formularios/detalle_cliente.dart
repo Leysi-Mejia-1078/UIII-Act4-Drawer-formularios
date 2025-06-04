@@ -21,25 +21,24 @@ class Details extends StatelessWidget {
   final String clienteMembresia;
 
   Widget _buildDetailRow(IconData icon, String label, String value) {
-    return ListTile(
-      dense: true,
-      visualDensity: const VisualDensity(vertical: -2),
-      contentPadding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 0.0),
-      leading: Icon(icon, color: Color.fromARGB(255, 131, 83, 215), size: 20.0),
-      title: Text(
-        label,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 12.0,
-          color: Colors.grey,
-        ),
-      ),
-      subtitle: Text(
-        value,
-        style: const TextStyle(
-          fontSize: 14.0,
-          color: Colors.black87,
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
+      child: Row(
+        children: [
+          Icon(icon, size: 18, color: Color.fromARGB(255, 131, 83, 215)),
+          const SizedBox(width: 8),
+          Text(
+            label,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(color: Colors.black87),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -61,62 +60,52 @@ class Details extends StatelessWidget {
       ),
       body: Container(
         color: Colors.grey.shade100,
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(16.0),
         child: Card(
           elevation: 3.0,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
           child: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Nombre del cliente
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: const Icon(Icons.person_rounded, color: Color.fromARGB(255, 141, 52, 200), size: 28.0),
-                  title: Text(
-                    clienteName,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                      color: Colors.blueGrey,
+                // Cabecera con nombre
+                Row(
+                  children: [
+                    const CircleAvatar(
+                      radius: 24,
+                      backgroundColor: Color.fromARGB(255, 141, 52, 200),
+                      child: Icon(Icons.person_rounded, color: Colors.white, size: 28),
                     ),
-                  ),
+                    const SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          clienteName,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Colors.blueGrey,
+                          ),
+                        ),
+                        Text("ID: $clienteId"),
+                      ],
+                    ),
+                  ],
                 ),
-                const Divider(),
 
-                // Detalles del cliente
-                _buildDetailRow(Icons.map_rounded, 'Apellidos:', clienteApellidos),
-                _buildDetailRow(Icons.badge_rounded, 'ID Cliente:', clienteId),
+                const SizedBox(height: 16.0),
+                _buildDetailRow(Icons.people_alt_rounded, 'Apellidos:', clienteApellidos),
                 _buildDetailRow(Icons.location_on_rounded, 'Dirección:', clienteDireccion),
-                _buildDetailRow(Icons.call_rounded, 'Teléfono:', clienteTelefono),
-                _buildDetailRow(Icons.alternate_email_rounded, 'Correo:', clienteCorreo),
+                _buildDetailRow(Icons.phone_rounded, 'Teléfono:', clienteTelefono),
+                _buildDetailRow(Icons.email_rounded, 'Correo:', clienteCorreo),
                 _buildDetailRow(Icons.card_membership_rounded, 'Membresía:', clienteMembresia),
 
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 16.0),
 
                 // Botón eliminar
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      print('Delete button pressed');
-                    },
-                    icon: const Icon(Icons.delete_forever_rounded, color: Colors.white),
-                    label: const Text(
-                      'Eliminar Cliente',
-                      style: TextStyle(color: Colors.white, fontSize: 14.0),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 67, 20, 92),
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      elevation: 2.0,
-                    ),
-                  ),
-                ),
+                
               ],
             ),
           ),
